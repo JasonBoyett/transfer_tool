@@ -22,16 +22,16 @@ def search_and_transfer(dir, suffix, to_copy, dest):
     directories = os.listdir(dir)
 
     for directory in directories:
-        new = os.path.join(dir, directory)
-        if new.endswith(suffix):
+        path = os.path.join(dir, directory)
+        if path.endswith(suffix):
             try:
-                transfer(to_copy, new, dest)
+                transfer(to_copy, path, dest)
                 print(directory, "transferred")
             except FileNotFoundError:
                 print("file not found")
-        elif os.path.isdir(new):
+        elif os.path.isdir(path):
             try:
-                search_and_transfer(new, suffix, to_copy, dest)
+                search_and_transfer(path, suffix, to_copy, dest)
                 print(directory, "searched")
             except PermissionError:
                 print(directory, "denied access")
