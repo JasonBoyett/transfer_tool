@@ -25,7 +25,7 @@ def search_and_transfer(dir: str, suffix: str, to_copy: bool, dst: str):
         path = os.path.join(dir, directory)
         if path.endswith(suffix):
             try:
-                transfer(to_copy, path, dst)
+                transfer(to_copy, suffix, path, dst)
                 print(directory, "transferred")
             except FileNotFoundError:
                 print("file not found")
